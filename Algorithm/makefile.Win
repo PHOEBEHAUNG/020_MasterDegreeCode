@@ -1,0 +1,44 @@
+TARGET   = main
+
+ifeq ($(OS),Windows_NT) 
+RM = del /Q /F
+CP = copy /Y
+ifdef ComSpec
+SHELL := $(ComSpec)
+endif
+ifdef COMSPEC
+SHELL := $(COMSPEC)
+endif
+else
+RM = rm -rf
+CP = cp -f
+endif
+
+CC=g++
+LL=g++
+
+SRC=./src
+OUT=./out
+
+CFLAGS=  -O3 -ansi -g -Wno-unused-result 
+LFLAGS=  -lm
+
+INC= -I./inc
+
+SOURCES  := $(wildcard $(SRC)/*.cpp)
+OBJECTS  := $(SOURCES:%.cpp=%.o)
+
+$(BINDIR)/$(TARGET): $(OBJECTS)
+	@$(LL) $(OBJECTS) $(LFLAGS) -o ${TARGET}
+	@echo "Linking complete!"
+
+$(OBJECTS): $(OBJ)%.o : %.cpp
+	@$(CC) $(CFLAGS) -c $< -o $@ ${INC}  $(--cflags)
+	@echo "[PH] "$<
+
+all:$(BINDIR)/$(TARGET)
+
+clean:
+	@echo "Clean complete!"
+	del /Q /F *.exe
+	del /Q /F *.o
