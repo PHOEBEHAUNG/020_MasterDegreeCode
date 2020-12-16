@@ -1,1 +1,1 @@
-Example of Graduate School Exam Program
+Example of Graduate School Exam Program 2
