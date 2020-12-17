@@ -212,6 +212,8 @@ class Solution
     return 0;
   } 
 
+  ///KMP Algorithm for Pattern Searching
+  ///https://www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/ 
   public long LongestCommonSubstring_Method1() 
   {
 
