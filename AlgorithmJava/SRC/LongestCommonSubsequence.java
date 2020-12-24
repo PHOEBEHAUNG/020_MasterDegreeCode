@@ -212,14 +212,15 @@ class Solution
     return 0;
   } 
 
-  ///KMP Algorithm for Pattern Searching
-  ///https://www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/ 
+  /// KMP Algorithm for Pattern Searching
+  /// https://www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/ 
   public long LongestCommonSubstring_Method1() 
   {
 
     return 0;
   }
 
+  /// Dynamic Programming
   public long LongestCommonSubstring_Method2(int p, int q, String s1, String s2) 
   {
     int weights[][] = new int[p + 1][q + 1]; 

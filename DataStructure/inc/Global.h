@@ -31,7 +31,6 @@
 
 #include "Heap.h"
 #include "BinaryTree.h"
-#include "Tree.h"
 #include "Graph.h"
 
 #include "Task.h"

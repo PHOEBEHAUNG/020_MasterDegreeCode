@@ -99,3 +99,44 @@ int BinaryTreeMain()
 
   return 0;
 }
+
+/*
+      1
+     / \
+    /   \
+   2     3
+  / \   /
+ 4   5 6
+*/
+void TaskFindBinaryTreeByPreorderInorder()
+{
+  int in[]   = {4, 2, 5, 1, 6, 3};
+
+  int pre[]  = {1, 2, 4, 5, 3, 6};
+  int post[] = {4, 5, 2, 6, 3, 1};
+
+  //FindBinaryTreeByPreorderInorder(pre, in, 6);
+  printf("===================\n");
+  FindBinaryTreeByPostorderInorder(post, in, 6);
+}
+
+int GraphMain()
+{
+  int connectCount = 6;
+  int connect[6][2] = {{0, 5}, {2, 3}, {1, 5}, {3, 4}, {1, 2}, {0, 4}};
+
+  int *p[connectCount];
+
+  for(int i = 0; i < connectCount; i++)
+  {
+    p[i] = connect[i];
+  }
+
+  AdjacencyMatrixInit(6);
+  CreateAdjacencyMatrix(p, 6);
+
+  AdjacencyMatrixPrint();
+  AdjacencyMatrixFree();
+  
+  return 0;
+}

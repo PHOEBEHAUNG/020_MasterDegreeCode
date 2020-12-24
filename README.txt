@@ -1,1 +1,1 @@
-Example of Graduate School Exam Program 2
+Prepare for Master degree test

@@ -433,3 +433,136 @@ void PrintMyTreeByBFS(TreeNode* x)
 {
 
 }
+
+TreeNode* newNode(int data)
+{
+  struct TreeNode* node = (struct TreeNode*)malloc(sizeof(struct TreeNode));
+  node->val = data;
+  node->left = NULL;
+  node->right = NULL;
+  return (node);
+}
+
+int search(int arr[], int strt, int end, int value)
+{
+  int i;
+  for (i = strt; i <= end; i++) 
+  {
+    if (arr[i] == value)
+    {
+      return i;
+    }
+  }
+  return 0;
+}
+
+TreeNode* buildTreePreorderInorder(int in[], int pre[], int inStrt, int inEnd)
+{
+  static int preIndex = 0;
+ 
+  if (inStrt > inEnd)
+  {      
+    return NULL;
+  }
+  TreeNode* tNode = newNode(pre[preIndex++]);
+  
+  if (inStrt == inEnd)
+  {
+    return tNode;
+  }
+
+  int inIndex = search(in, inStrt, inEnd, tNode->val);
+  /// 二分法，從index 分成左右，左邊為左樹、右為右樹繼續分下去
+  tNode->left = buildTreePreorderInorder(in, pre, inStrt, inIndex - 1);
+  tNode->right = buildTreePreorderInorder(in, pre, inIndex + 1, inEnd);
+ 
+  return tNode;
+}
+
+TreeNode* buildTreePostorderInorder(int in[], int post[], int inStrt, int inEnd, int* pIndex)
+{ 
+  static int preIndex = inEnd;
+ 
+  if (inStrt > inEnd)
+  {      
+    return NULL;
+  }
+  TreeNode* tNode = newNode(post[preIndex--]);
+  
+  if (inStrt == inEnd)
+  {
+    return tNode;
+  }
+
+  int inIndex = search(in, inStrt, inEnd, tNode->val);
+  printf("inIndex : %d\n", inIndex);
+  /// 二分法，從index 分成左右，左邊為左樹、右為右樹繼續分下去
+  tNode->right = buildTreePostorderInorder(in, post, inIndex + 1, inEnd, &preIndex);
+  tNode->left = buildTreePostorderInorder(in, post, inStrt, inIndex - 1, &preIndex);
+ 
+  return tNode;
+
+  /// anather method 
+  // if (inStrt > inEnd)
+  // {      
+  //   return NULL;
+  // }
+  // TreeNode* tNode = newNode(post[*pIndex]);
+  // printf("pIndex : %d\n",  (*pIndex));
+  // (*pIndex)--;
+
+  // if (inStrt == inEnd)
+  // {
+  //   return tNode;
+  // }
+
+  // int inIndex = search(in, inStrt, inEnd, tNode->val);
+  // printf("Right inIndex : %d\n", inIndex);
+  // tNode->right = buildTreePostorderInorder(in, post, inIndex + 1, inEnd, pIndex);
+  // tNode->left = buildTreePostorderInorder(in, post, inStrt, inIndex - 1, pIndex);
+  // return tNode;
+}
+
+/*
+Algorithm: buildTree() 
+1) Pick an element from Preorder. Increment a Preorder Index Variable (preIndex in below code) to pick next element in next recursive call. 
+2) Create a new tree node tNode with the data as picked element. 
+3) Find the picked element’s index in Inorder. Let the index be inIndex. 
+4) Call buildTree for elements before inIndex and make the built tree as left subtree of tNode. 
+5) Call buildTree for elements after inIndex and make the built tree as right subtree of tNode. 
+6) return tNode.
+Thanks to Rohini and Tushar for suggesting the code. 
+*/
+void FindBinaryTreeByPreorderInorder(int *PreorderNodes, int *InorderNodes, int number)
+{
+  int value = 0;
+
+  int preIndex = 0;
+  int inIndex = 0;
+
+  if(PreorderNodes == NULL || InorderNodes == NULL)
+  {
+    return;
+  }
+
+  TreeNode* root = buildTreePreorderInorder(InorderNodes, PreorderNodes, 0, number - 1);
+
+  PrintMyTreeByLevelOrderTraversal(root);
+}
+
+void FindBinaryTreeByPostorderInorder(int *PostorderNodes, int *InorderNodes, int number)
+{
+  int value = 0;
+
+  int postIndex = 0;
+  int inIndex = 0;
+
+  if(PostorderNodes == NULL || InorderNodes == NULL)
+  {
+    return;
+  }
+
+  int pIndex = number - 1;
+  TreeNode* root = buildTreePostorderInorder(InorderNodes, PostorderNodes, 0, number - 1, &pIndex);
+  PrintMyTreeByLevelOrderTraversal(root);
+}

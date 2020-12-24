@@ -39,4 +39,6 @@ extern void PrintMyTreeByLevelOrderTraversal(TreeNode* x);
 extern void PrintMyTreeByDFS(TreeNode* x); /// 前中後 三種
 extern void PrintMyTreeByBFS(TreeNode* x); /// 層序
 
+extern void FindBinaryTreeByPreorderInorder(int *nodes1, int *nodes2, int number);
+extern void FindBinaryTreeByPostorderInorder(int *PostorderNodes, int *InorderNodes, int number);
 #endif ///<  __BINARYTREE_H__
