@@ -25,4 +25,32 @@ int AssemblyLineScheduling()
     // Consider exit times and retutn minimum
     return fmin(T1[NUM_STATION-1] + x[0], T2[NUM_STATION-1] + x[1]);
 }
+
+/**
+ * for min spanning tree
+ * 每次挑選最小邊，若有聯通則不加入邊的集合
+ */
+int KruskalAlgorithm()
+{
+    return 0;
+}
+
+/**
+ * for min spanning tree
+ * 
+ */
+int PrimesAlgorithm()
+{
+    return 0;
+}
+
+/**
+ * for min spanning tree
+ * 
+ */
+int SollinAlgorithm()
+{
+    return 0;
+}
+ 
  
