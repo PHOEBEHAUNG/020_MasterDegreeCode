@@ -3,8 +3,6 @@
 
 int main(int argc, char* argv[])                                                                                       
 {
-    printf("%d", AssemblyLineScheduling());
- 
-    return 0;
+  SollinAlgorithm();
   return 0;                                                                   
 }

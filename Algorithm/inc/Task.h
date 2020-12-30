@@ -4,4 +4,7 @@
 #include "Global.h"
 
 extern int AssemblyLineScheduling();
+extern int KruskalAlgorithm();
+extern int PrimesAlgorithm();
+extern int SollinAlgorithm();
 #endif ///<  __TASK_H__
