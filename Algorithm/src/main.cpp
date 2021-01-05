@@ -3,6 +3,6 @@
 
 int main(int argc, char* argv[])                                                                                       
 {
-  SollinAlgorithm();
+  BellmanShortestPathOnetoAll();
   return 0;                                                                   
 }
