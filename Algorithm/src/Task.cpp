@@ -430,8 +430,8 @@ int BellmanShortestPathOnetoAll()
      for (int i = 0; i < connectCount; i++) 
      { 
         int u = connectWithWeight[i][0]; 
-            int v = connectWithWeight[i][1]; 
-            int weight = connectWithWeight[i][2]; 
+        int v = connectWithWeight[i][1]; 
+        int weight = connectWithWeight[i][2]; 
         if (shortest[u] != INT32_MAX && shortest[u] + weight < shortest[v]) 
         { 
             printf("Graph contains negative weight cycle"); 
