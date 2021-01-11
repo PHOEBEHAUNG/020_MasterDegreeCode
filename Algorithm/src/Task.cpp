@@ -456,6 +456,7 @@ int BellmanShortestPathOnetoAll()
     AdjacencyMatrixFree();
     return 0;
 }
+
 /**
  * for the shortest path all to all
  * 

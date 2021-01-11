@@ -116,6 +116,6 @@ public class OptimalBinarySearchTree
         int n = keys.length; 
         System.out.println("Cost of Optimal BST is " + 
                          optimalSearchTree(keys, freq, n)); 
-    } 
+    }
 } 
 
