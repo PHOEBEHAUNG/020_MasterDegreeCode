@@ -10,4 +10,11 @@ extern void ForkExample3();
 extern void ExeclpExample1();
 
 extern void PThreadExample1();
+
+extern void ThreadCheck();
+
+extern void ConsumerProducer();
+extern void CriticalTwoProcessesCheck();
+
+extern void PthreadMutexProcessesCheck();
 #endif ///<  __TASK_H__
