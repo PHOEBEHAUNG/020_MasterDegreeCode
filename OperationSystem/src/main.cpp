@@ -2,6 +2,6 @@
 
 int main(int argc, char *argv[])
 {
-  PthreadMutexProcessesCheck();
+  TestAndSetCheck();
   return 0;
 }

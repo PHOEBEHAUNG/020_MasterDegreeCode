@@ -3,12 +3,12 @@
 
 #include "Global.h"
 
-extern void InsertionSorting();
-extern void BubbleSorting();
-extern void SelectionSorting();
-extern void QuickSorting();
-extern void MergeSorting();
-extern void HeapSorting();
-extern void RadixSorting();
+extern void InsertionSorting(int *datas, int cnt, int order);
+extern void BubbleSorting(int *datas, int cnt, int order);
+extern void SelectionSorting(int *datas, int cnt, int order);
+extern void QuickSorting(int *datas, int cnt, int order);
+extern void MergeSorting(int *datas, int cnt, int order);
+extern void HeapSorting(int *datas, int cnt, int order);
+extern void RadixSorting(int *datas, int cnt, int order);
 
 #endif ///<  __SORTING_H__

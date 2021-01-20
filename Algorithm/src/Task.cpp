@@ -542,3 +542,13 @@ int FloydWarshallShortestPathAlltoAll()
     return 0;
   return 0;
 }
+
+void TaskSorting()
+{
+
+}
+
+void TaskSearching()
+{
+
+}

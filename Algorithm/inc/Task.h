@@ -12,4 +12,6 @@ extern int DijkstrasShortestPathOnetoAll();
 extern int FloydWarshallShortestPathAlltoAll();
 extern int BellmanShortestPathOnetoAll();
 
+extern void TaskSorting();
+extern void TaskSearching();
 #endif ///<  __TASK_H__

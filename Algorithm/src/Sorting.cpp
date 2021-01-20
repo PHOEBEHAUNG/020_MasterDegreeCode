@@ -3,7 +3,7 @@
 #define ASCENDING_ORDER  (0)
 #define DESCENDING_ORDER (1)
 
-void BubbleSorting(int *datas, int order)
+void BubbleSorting(int *datas, int cnt, int order)
 {
   if(order == ASCENDING_ORDER)
   {
@@ -11,32 +11,32 @@ void BubbleSorting(int *datas, int order)
   }
 }
 
-void InsertionSorting()
+void InsertionSorting(int *datas, int cnt, int order)
 {
 
 }
 
-void SelectionSorting()
-{
-  
-}
-
-void QuickSorting()
+void SelectionSorting(int *datas, int cnt, int order)
 {
   
 }
 
-void MergeSorting()
+void QuickSorting(int *datas, int cnt, int order)
 {
   
 }
 
-void HeapSorting()
+void MergeSorting(int *datas, int cnt, int order)
 {
   
 }
 
-void RadixSorting()
+void HeapSorting(int *datas, int cnt, int order)
+{
+  
+}
+
+void RadixSorting(int *datas, int cnt, int order)
 {
   
 }

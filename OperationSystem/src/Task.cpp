@@ -125,6 +125,9 @@ void ThreadCheck()
 /// Consumer & Producer Problem
 /// https://blog.gtwang.org/programming/pthread-multithreading-programming-in-c-tutorial/
 /// https://ithelp.ithome.com.tw/articles/10229559
+/// https://ithelp.ithome.com.tw/articles/10206310
+/// https://sls.weco.net/node/21326
+
 #define BUFFER_SIZE 5
 int dataProducer = 0;
 int dataConsumer = 0;
@@ -326,7 +329,7 @@ void CriticalTwoProcessesCheck()
 }
 
 /// Peterson’s Solution for Two Processes
-/// Bakery Algorithm (n processes)
+/// Bakery Algorithm (n processes) /// 排隊拿門票
 
 /// implement 
 /// Pthread Lock/Mutex Routines   (Condition Variables (CV))
@@ -362,9 +365,54 @@ void PthreadMutexProcessesCheck()
 
 /// Atomic
 /// TestAndSet
-/// swap 
+#define LOCKED 1
+int TestAndSet(int* lockPtr) 
+{
+    int oldValue;     
+    // Start of atomic segment
+    // The following statements should be interpreted as pseudocode for
+    // illustrative purposes only.
+    // Traditional compilation of this code will not guarantee atomicity, the
+    // use of shared memory (i.e. not-cached values), protection from compiler
+    // optimization, or other required properties.
+    oldValue = *lockPtr;
+    *lockPtr = LOCKED;
+    // End of atomic segment
+
+    return oldValue;
+}
+
+void* TestAndSetChild(void *threadId) 
+{
+  int lock = 1;
+  for(int i = 0;i < 3;++i) 
+  {
+    lock = i % 2;
+    while(TestAndSet(&lock));
+
+    int tmp = counter;
+    sleep(1);
+    counter = tmp + 1;
+    lock = 0;
+    printf("Counter = %d\n", counter);
+  }
+  pthread_exit(NULL);
+}
+
+void TestAndSetCheck()
+{
+  pthread_t t1, t2;
+  pthread_mutex_init (&mutex1, NULL);
+  pthread_create(&t1, NULL, TestAndSetChild, NULL);
+  pthread_create(&t2, NULL, TestAndSetChild, NULL);
+  pthread_join(t1, NULL);
+  pthread_join(t2, NULL);
+}
+
+/// swap
 
 /// semaphores
+/// 必需要保證沒有兩個process可以同時執行wait ()和signal()，也就是說要把wait ()和signal()也放入critical section。
 /// POSIX, JAVA
 
 /// n-Process Critical Section Problem  
@@ -373,12 +421,56 @@ void PthreadMutexProcessesCheck()
 
 /// classic problem
 /// Bounded-Buffer Problem
+/**
+ * 有n個buffers，且每個都可以放一個item。
+ * Semaphore mutex的初始值設為1。
+ * Semaphore full的初始值設為0。
+ * Semaphore empty的初始值設為n。
+ * 在producer與consumer的process架構中，因為producer是wait(empty)、wait(mutex)，
+ * 然後signal(mutes)、signal(full)，與consumer的wait(full)、wait(mutex)跟signal(mutex)、signal(empty)並不一樣，
+ * 而且在wait()方面需要取得lock或spinlock才可以進入CS操作，這就是容易產生問題的所在。
+ * 
+ */ 
 /// Readers-Writers Problem
+/**
+ * 
+ * 多個process可以同時共享data：
+ * Readers：只能read the data，並不能執行任何更新。
+ * Writers：可以read也可以write。
+ * Problem：只允許多個reader在同一時間進行read。
+ * 只有單一writer可以在一個時間內存取共享的data。
+ * 共享data：
+ * Data set
+ * Semaphore rw_mutex的初始值為1。
+ * Semaphore mutex的初始值為1。
+ * Semaphore read_count的初始值為0。
+ */
 /// First Reader-Writer Algorithm
+/**
+ * First variation：除非有witer去使用共享object，否則不能有reader在一直等待。
+ * Second variation：只要writer準備就緒，就會執行寫作ASAP。
+ * 以上兩種都有可能會產生「Starvation」的情況，導致更多的變化出現。
+ * 由kernel提供reader-writer locks，才能使某些系統得以解決problem。
+ */
 /// Dining-Philosophers Problem
-
+/// Deadlock的發生 
+/**
+ * 只允許在一個圓桌上有4個人而已。
+ * 要檢查左右是否都已經available，可以的話便能eating。
+ * 使用asymmetric方法解決：也就是說，坐在奇位數位置的人先拿取左邊再拿取右邊的筷子；坐在雙數位置的人先拿取右邊再拿取左邊的筷子，方能解決問題。
+ */
 /// monitor 
+/**
+ * 提供方便且有效率的機制給process synchronization使用。
+有些系統不支持。
+一次只能有一個process可以在monitor內執行。
+不能解決所有的synchronization問題，但這已經是較為複雜的方法。
+ */
 /// Bounded-Buffer Problem
 /// Readers-Writers Problem
 /// First Reader-Writer Algorithm
 /// Dining-Philosophers Problem
+/**
+ * 每個philosopher i invoke兩個operations pickup()以及putdown()在sequence中。
+ * 因為一次一個進入，所以並不會產生dealock，但因為動作慢所以可能會產生starvation的情況。
+ */

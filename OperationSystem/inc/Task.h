@@ -17,4 +17,6 @@ extern void ConsumerProducer();
 extern void CriticalTwoProcessesCheck();
 
 extern void PthreadMutexProcessesCheck();
+
+extern void TestAndSetCheck();
 #endif ///<  __TASK_H__

@@ -16,17 +16,17 @@ int LinearSearching(int *datas, int cnt, int target)
   return result;
 }
 
-void BinarySearching()
+void BinarySearching(int *datas, int cnt, int target)
 {
   
 }
 
-void FibonacciSearching()
+void FibonacciSearching(int *datas, int cnt, int target)
 {
   
 }
 
-void InterpolationSearching()
+void InterpolationSearching(int *datas, int cnt, int target)
 {
   
 }
