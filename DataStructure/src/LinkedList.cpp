@@ -105,15 +105,17 @@ int LinkedListPop()
   return delVal;
 }
 
-void LinkedListDeleteHead()
+int LinkedListDeleteHead()
 {
   if(linkedListHead == NULL)
   {
-    return;
+    return -1000;
   }
 
+  int value = 0;
   LinkedListNode *preNode = NULL;
   
+  value = linkedListHead->data;
   if(linkedListHead->next == NULL)
   {
     linkedListHead->data = 0;
@@ -124,11 +126,11 @@ void LinkedListDeleteHead()
   {
     preNode = linkedListHead;
     linkedListHead = linkedListHead->next;
-
     preNode->data = 0;
     free(preNode);
     preNode = NULL;
   }
+  return value;
 }
 
 void LinkedListDeleteByKey(int key)
@@ -167,6 +169,11 @@ void LinkedListDeleteByKey(int key)
   }
 }
 
+bool LinkedListSearch(int key)
+{
+  return false;
+}
+
 void LinkedListClear(LinkedListNode *deleteNode)
 {
   if(deleteNode == NULL)
@@ -194,13 +201,13 @@ void LinkedListUnInit()
   }
 }
 
-void PrintMyLinkedLis()
+void PrintMyLinkedList()
 {
   printf("LinkedLis start\n");
   
   if(linkedListHead == NULL)
   {
-    printf("LinkedLis end\n");
+    printf("LinkedList end\n");
     return;
   }
 
@@ -210,5 +217,5 @@ void PrintMyLinkedLis()
     printf("..%d..\n", p->data);
     p = p->next;
   }
-  printf("LinkedLis end\n");
+  printf("LinkedList end\n");
 }

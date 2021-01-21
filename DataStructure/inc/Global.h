@@ -28,6 +28,8 @@
 #include "Queue.h"
 #include "Stack.h"
 #include "LinkedList.h"
+#include "LinkedListCircle.h"
+#include "LinkedListDouble.h"
 
 #include "Heap.h"
 #include "BinaryTree.h"

@@ -11,8 +11,8 @@ typedef struct LinkedListNodeSt
 }LinkedListNode; 
 
 extern LinkedListNode* linkedListHead;
-extern void LinkedListInit(int data);
 
+extern void LinkedListInit(int data);
 extern LinkedListNode* LinkedListGetByIndex(int index);
 
 /// insert by index
@@ -22,7 +22,7 @@ extern void LinkedListInsertAfter(LinkedListNode *preNode, int data);
 
 /// delete by index 
 extern int LinkedListPop();
-extern void LinkedListDeleteHead();
+extern int LinkedListDeleteHead();
 extern void LinkedListDeleteByKey(int key);
 
 /// Find Length of a Linked List (Iterative and Recursive)
@@ -32,6 +32,6 @@ extern void LinkedListDeleteByKey(int key);
 /// Detect loop in a linked list
 
 extern void LinkedListUnInit();
-extern void PrintMyLinkedLis();
+extern void PrintMyLinkedList();
 
 #endif ///<  __LINKEDLIST_H__

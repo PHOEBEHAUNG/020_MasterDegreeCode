@@ -10,5 +10,13 @@ extern int LinkedListMain();
 extern int BinaryTreeMain();
 extern void TaskFindBinaryTreeByPreorderInorder();
 
-extern int GraphMain();
+extern int TaskGraphMain();
+
+extern void TaskLikedListQueue();
+extern void TaskLikedListStack();
+extern void TaskLikedListDouble();
+extern void TaskLikedListCircle();
+extern void TaskLikedListPolynomial();
+extern void TaskLikedListSparseMatrix();
+
 #endif ///<  __TASK_H__

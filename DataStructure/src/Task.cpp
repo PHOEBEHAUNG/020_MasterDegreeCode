@@ -42,20 +42,20 @@ int LinkedListMain()
   LinkedListPush(iArrElement[1]);
   LinkedListPush(iArrElement[2]);
   LinkedListPush(iArrElement[3]);
-  PrintMyLinkedLis();
+  PrintMyLinkedList();
 
   LinkedListInsertHead(iArrElement[5]);
   LinkedListPop();
-  PrintMyLinkedLis();
+  PrintMyLinkedList();
 
   LinkedListPush(iArrElement[6]);
-  PrintMyLinkedLis();
+  PrintMyLinkedList();
 
   LinkedListPop();
-  PrintMyLinkedLis();
+  PrintMyLinkedList();
 
   LinkedListUnInit();
-  PrintMyLinkedLis();
+  PrintMyLinkedList();
 
   LinkedListInit(iArrElement[0]);
   LinkedListPush(iArrElement[1]);
@@ -64,18 +64,18 @@ int LinkedListMain()
   LinkedListPush(iArrElement[4]);
   LinkedListPush(iArrElement[5]);
   LinkedListPush(iArrElement[6]);
-  PrintMyLinkedLis();
+  PrintMyLinkedList();
 
   LinkedListNode * insert = NULL;
   insert = LinkedListGetByIndex(3);
   LinkedListInsertAfter(insert, 100);
-  PrintMyLinkedLis();
+  PrintMyLinkedList();
 
   LinkedListDeleteByKey(20);
-  PrintMyLinkedLis();
+  PrintMyLinkedList();
 
   LinkedListUnInit();
-  PrintMyLinkedLis();
+  PrintMyLinkedList();
   return 0;            
 }
 
@@ -120,7 +120,7 @@ void TaskFindBinaryTreeByPreorderInorder()
   FindBinaryTreeByPostorderInorder(post, in, 6);
 }
 
-int GraphMain()
+int TaskGraphMain()
 {
   int connectCount = 6;
   int connect[6][2] = {{0, 5}, {2, 3}, {1, 5}, {3, 4}, {1, 2}, {0, 4}};
@@ -139,4 +139,113 @@ int GraphMain()
   AdjacencyMatrixFree();
   
   return 0;
+}
+
+void TaskLikedListQueue()
+{
+  int iArrElement[7] = {3,9,20,-1000,-1000,15,7};
+  int elementSize = sizeof(iArrElement) / sizeof(int);
+
+  int delVal = 0;
+
+  LinkedListInit(iArrElement[0]);
+  LinkedListPush(iArrElement[1]);
+  LinkedListPush(iArrElement[2]);
+  LinkedListPush(iArrElement[3]);
+  PrintMyLinkedList();
+
+  delVal = LinkedListDeleteHead();
+  printf("LikedListQueue Head : %d\n", delVal);
+  PrintMyLinkedList();
+
+  LinkedListPush(iArrElement[4]);
+  LinkedListPush(iArrElement[5]);
+  PrintMyLinkedList();
+
+  LinkedListUnInit();
+}
+
+void TaskLikedListStack()
+{
+  int iArrElement[7] = {3,9,20,-1000,-1000,15,7};
+  int elementSize = sizeof(iArrElement) / sizeof(int);
+
+  int delVal = 0;
+  LinkedListInit(iArrElement[0]);
+  LinkedListPush(iArrElement[1]);
+  LinkedListPush(iArrElement[2]);
+  LinkedListPush(iArrElement[3]);
+  PrintMyLinkedList();
+
+  LinkedListPop();
+  PrintMyLinkedList();
+
+  LinkedListPush(iArrElement[6]);
+  PrintMyLinkedList();
+
+  LinkedListPop();
+  PrintMyLinkedList();
+
+  PrintMyLinkedList();
+
+  LinkedListPush(iArrElement[1]);
+  LinkedListPush(iArrElement[2]);
+  LinkedListPush(iArrElement[3]);
+  LinkedListPush(iArrElement[4]);
+  LinkedListPush(iArrElement[5]);
+  LinkedListPush(iArrElement[6]);
+  PrintMyLinkedList();
+
+  LinkedListUnInit();
+}
+
+void TaskLickedListMultiStack()
+{
+
+}
+
+void TaskLickedListMultiQueue()
+{
+
+}
+
+void TaskLikedListDouble()
+{
+  LinkedListDoubleInit(5);
+  LinkedListDoublePush(15);
+  LinkedListDoublePush(25);
+  LinkedListDoublePush(35);
+  LinkedListDoublePush(45);
+
+  LinkedListDoubleDeleteByIndex(3);
+  PrintMyLinkedLisDouble();
+
+  LinkedListDoubleDeleteByIndex(1);
+  PrintMyLinkedLisDouble();
+
+  LinkedListDoubleUnInit();
+  PrintMyLinkedLisDouble();
+}
+
+void TaskLikedListCircle()
+{
+  LinkedListCircleInit(10);
+
+  LinkedListCirclePush(15);
+  LinkedListCircleInsertHead(20);
+  
+  PrintMyLinkedListCircle();
+  LinkedListCircleUnInit();
+
+  PrintMyLinkedListCircle();
+}
+
+void TaskLikedListPolynomial()
+{
+
+}
+
+void TaskLikedListSparseMatrix()
+{
+  
 }
