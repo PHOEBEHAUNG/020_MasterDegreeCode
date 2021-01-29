@@ -19,7 +19,8 @@ class MinEditDistance
             return z;
         }
     }
- 
+    
+    /// Recursive
     static int editDist(String str1, String str2, int m, int n)
     {
         if (m == 0)
@@ -47,7 +48,7 @@ class MinEditDistance
     }
 
     /// table 
-    static int recurrence(String str1, String str2, int m, int n)
+    static int dp(String str1, String str2, int m, int n)
     {
       int dp[][] = new int[m + 1][n + 1];
 
@@ -75,6 +76,16 @@ class MinEditDistance
             dp[i][j] = 1 + minVal;
           }
         }
+
+        for(int a = 0; a <= m; a++)
+        {
+            for(int b = 0; b <= n; b++)
+            {
+                System.out.print(String.format("%2d", dp[a][b]) + " ");
+            }
+            System.out.println("");
+        }
+        System.out.println("====================================================");
       }
       return dp[m][n];
     }
@@ -83,7 +94,7 @@ class MinEditDistance
     {
         String str1 = "sunday";
         String str2 = "saturday";
-        System.out.println(editDist(str1, str2, str1.length(), str2.length()));
-        System.out.println(recurrence(str1, str2, str1.length(), str2.length()));
+        //System.out.println(editDist(str1, str2, str1.length(), str2.length()));
+        System.out.println(dp(str1, str2, str1.length(), str2.length()));
     }
 }
